@@ -14,6 +14,11 @@
 - ✅ **Charts**: points (last 7 days) + CPU trend (selected instance)
 - ✅ **Export / Import JSON**, Reset app, demo tweaks
 
+## Mobile notes
+- Bottom navigation is optimized for mobile (4 tabs, no wrapping).
+- Dashboard header + instances list adapt into a stacked layout on small screens.
+- Topbar auto-simplifies on mobile to avoid cramped spacing.
+
 ## Run
 Open `index.html` directly in a browser.
 
@@ -27,3 +32,10 @@ Open `index.html` directly in a browser.
 - VPS metrics & provisioning are simulated.
 
 Enjoy!
+
+
+## WindowsRDP.yml sync
+- Put `WindowsRDP.yml` next to `index.html` (same folder).
+- Run via a local server (recommended) so the app can `fetch()` the YML and auto-sync OS/Language options.
+  - Example: `python -m http.server` then open `http://localhost:8000`.
+- If YML can't be fetched (file://), the UI falls back to embedded defaults matching the provided workflow.

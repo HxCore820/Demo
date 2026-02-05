@@ -38,38 +38,10 @@
     simulateDelayMs: { min: 900, max: 1400 },
 
     plans: {
-      free: {
-        label: "Free",
-        cpu: 1,
-        ram: 8,
-        disk: 50,
-        pointsPerHour: 50,
-        badge: "Best value",
-      },
-      micro: {
-        label: "Micro",
-        cpu: 1,
-        ram: 2,
-        disk: 25,
-        pointsPerHour: 25,
-        badge: "Cheapest",
-      },
-      pro: {
-        label: "Pro",
-        cpu: 2,
-        ram: 16,
-        disk: 100,
-        pointsPerHour: 120,
-        badge: "Power",
-      },
-      ultra: {
-        label: "Ultra",
-        cpu: 4,
-        ram: 32,
-        disk: 200,
-        pointsPerHour: 220,
-        badge: "Beast",
-      },
+      free: { label: "Free", cpu: 1, ram: 8, disk: 50, pointsPerHour: 50, badge: "Best value" },
+      micro: { label: "Micro", cpu: 1, ram: 2, disk: 25, pointsPerHour: 25, badge: "Cheapest" },
+      pro: { label: "Pro", cpu: 2, ram: 16, disk: 100, pointsPerHour: 120, badge: "Power" },
+      ultra: { label: "Ultra", cpu: 4, ram: 32, disk: 200, pointsPerHour: 220, badge: "Beast" },
     },
 
     regions: [
@@ -89,116 +61,272 @@
     ],
 
     promoCodes: {
-      BUFFBAN1000: { reward: 1000, once: true, label: "Buff Bẩn Admin" },
       WELCOME50: { reward: 50, once: true, label: "Welcome bonus" },
       BOOST10: { reward: 10, once: false, label: "Small boost" },
       CLOUD25: { reward: 25, once: true, label: "Cloud drop" },
     },
 
     achievements: [
-      {
-        id: "first_login",
-        ico: "👋",
-        title: "Welcome!",
-        desc: "Sign in for the first time",
-        reward: 10,
-        type: "boolean",
-      },
-      {
-        id: "first_earn",
-        ico: "💸",
-        title: "First earnings",
-        desc: "Earn any points",
-        reward: 10,
-        type: "count",
-        key: "lifetimeEarned",
-        goal: 1,
-      },
-      {
-        id: "earn_300",
-        ico: "🎯",
-        title: "Redeem ready",
-        desc: "Earn 300 points total",
-        reward: 25,
-        type: "count",
-        key: "lifetimeEarned",
-        goal: 300,
-      },
-      {
-        id: "earn_1000",
-        ico: "🏆",
-        title: "Point hoarder",
-        desc: "Earn 1000 points total",
-        reward: 50,
-        type: "count",
-        key: "lifetimeEarned",
-        goal: 1000,
-      },
-      {
-        id: "watch_20_ads",
-        ico: "▶️",
-        title: "Ad runner",
-        desc: "Watch 20 video ads",
-        reward: 25,
-        type: "count",
-        key: "videoWatched",
-        goal: 20,
-      },
-      {
-        id: "complete_50_links",
-        ico: "🔗",
-        title: "Link grinder",
-        desc: "Complete 50 short links",
-        reward: 25,
-        type: "count",
-        key: "shortCompleted",
-        goal: 50,
-      },
-      {
-        id: "streak_3",
-        ico: "🔥",
-        title: "Warm streak",
-        desc: "Reach a 3‑day streak",
-        reward: 20,
-        type: "count",
-        key: "streakCount",
-        goal: 3,
-      },
-      {
-        id: "streak_7",
-        ico: "🌋",
-        title: "On fire",
-        desc: "Reach a 7‑day streak",
-        reward: 40,
-        type: "count",
-        key: "streakCount",
-        goal: 7,
-      },
-      {
-        id: "first_vps",
-        ico: "☁️",
-        title: "Cloud citizen",
-        desc: "Create your first VPS",
-        reward: 30,
-        type: "count",
-        key: "vpsCreated",
-        goal: 1,
-      },
-      {
-        id: "ref_1",
-        ico: "🧲",
-        title: "Magnet",
-        desc: "Get 1 referral",
-        reward: 30,
-        type: "count",
-        key: "referrals",
-        goal: 1,
-      },
+      { id: "first_login", ico: "👋", title: "Welcome!", desc: "Sign in for the first time", reward: 10, type: "boolean" },
+      { id: "first_earn", ico: "💸", title: "First earnings", desc: "Earn any points", reward: 10, type: "count", key: "lifetimeEarned", goal: 1 },
+      { id: "earn_300", ico: "🎯", title: "Redeem ready", desc: "Earn 300 points total", reward: 25, type: "count", key: "lifetimeEarned", goal: 300 },
+      { id: "earn_1000", ico: "🏆", title: "Point hoarder", desc: "Earn 1000 points total", reward: 50, type: "count", key: "lifetimeEarned", goal: 1000 },
+      { id: "watch_20_ads", ico: "▶️", title: "Ad runner", desc: "Watch 20 video ads", reward: 25, type: "count", key: "videoWatched", goal: 20 },
+      { id: "complete_50_links", ico: "🔗", title: "Link grinder", desc: "Complete 50 short links", reward: 25, type: "count", key: "shortCompleted", goal: 50 },
+      { id: "streak_3", ico: "🔥", title: "Warm streak", desc: "Reach a 3‑day streak", reward: 20, type: "count", key: "streakCount", goal: 3 },
+      { id: "streak_7", ico: "🌋", title: "On fire", desc: "Reach a 7‑day streak", reward: 40, type: "count", key: "streakCount", goal: 7 },
+      { id: "first_vps", ico: "☁️", title: "Cloud citizen", desc: "Create your first VPS", reward: 30, type: "count", key: "vpsCreated", goal: 1 },
+      { id: "ref_1", ico: "🧲", title: "Magnet", desc: "Get 1 referral", reward: 30, type: "count", key: "referrals", goal: 1 },
     ],
 
     views: ["home", "earn", "dashboard", "settings"],
     dashTabs: ["overview", "instances", "analytics", "achievements"],
   };
+
+
+  // ---------------------------------------------------------
+  // Optional: Sync UI options from WindowsRDP.yml (GitHub Actions workflow)
+  // Goal: make the web control panel's dropdowns match workflow_dispatch inputs.
+  // Notes:
+  // - Works when served over http(s). If you open index.html via file://, fetch may be blocked;
+  //   in that case we fall back to embedded defaults.
+  // ---------------------------------------------------------
+  const WORKFLOW_SYNC = {
+    enabled: true,
+    ymlPath: "./WindowsRDP.yml",
+    loaded: false,
+    profile: null,
+  };
+
+  const WORKFLOW_FALLBACK_PROFILE = {
+    timeoutMinutes: 360,
+    inputs: {
+      os_version: {
+        description: "📀 Select Operating System / Chọn Hệ Điều Hành",
+        default: "Windows Server 2025 (Docker - 4vCPU | 8GB RAM)",
+        options: [
+          "Windows Server 2025 (Docker - 4vCPU | 8GB RAM)",
+          "Windows Server 2022 (Docker - 4vCPU | 8GB RAM)",
+          "Windows Server 2019 (Docker - 4vCPU | 8GB RAM)",
+          "Windows Server 2012 (Docker - 4vCPU | 8GB RAM)",
+          "Windows 11 Professional (Docker - 4vCPU | 8GB RAM)",
+          "Windows 10 Professional (Docker - 4vCPU | 8GB RAM)",
+        ],
+      },
+      language: {
+        description: "🌍 Select Language / Chọn Ngôn Ngữ",
+        default: "English",
+        options: ["English", "Tiếng Việt"],
+      },
+    },
+    env: { CPU: 4, RAM_GB: 8, DISK_GB: 60 },
+  };
+
+  function indentOf(line) {
+    const m = String(line).match(/^(\s*)/);
+    return m ? m[1].length : 0;
+  }
+
+  function stripQuotes(v) {
+    const s = String(v || "").trim();
+    if ((s.startsWith('"') && s.endsWith('"')) || (s.startsWith("'") && s.endsWith("'"))) return s.slice(1, -1);
+    return s;
+  }
+
+  function parseWorkflowInputsFromYml(yml) {
+    const lines = String(yml || "").split(/\r?\n/);
+
+    let i = 0;
+    for (; i < lines.length; i++) {
+      if (/^\s*workflow_dispatch:\s*$/.test(lines[i])) break;
+    }
+    if (i >= lines.length) return null;
+    const wdIndent = indentOf(lines[i]);
+
+    for (; i < lines.length; i++) {
+      if (/^\s*inputs:\s*$/.test(lines[i]) && indentOf(lines[i]) > wdIndent) break;
+    }
+    if (i >= lines.length) return null;
+
+    const inputsIndent = indentOf(lines[i]);
+    i++;
+
+    const inputs = {};
+    while (i < lines.length) {
+      const line = lines[i];
+      const ind = indentOf(line);
+      if (ind <= inputsIndent) break;
+
+      const mName = line.match(/^\s*([A-Za-z0-9_]+):\s*$/);
+      if (mName && ind === inputsIndent + 2) {
+        const name = mName[1];
+        const inputIndent = ind;
+        const input = {};
+
+        i++;
+        while (i < lines.length) {
+          const l = lines[i];
+          const li = indentOf(l);
+          if (li <= inputIndent) break;
+
+          const mkv = l.match(/^\s*([A-Za-z0-9_]+):\s*(.*)\s*$/);
+          if (mkv && li === inputIndent + 2) {
+            const k = mkv[1];
+            const raw = mkv[2];
+
+            if (k === "description" || k === "default" || k === "type") input[k] = stripQuotes(raw);
+            if (k === "required") input.required = /true/i.test(raw);
+
+            if (k === "options") {
+              const optionsIndent = li;
+              const opts = [];
+              i++;
+              while (i < lines.length) {
+                const ol = lines[i];
+                const oi = indentOf(ol);
+                if (oi <= optionsIndent) break;
+
+                const om = ol.match(/^\s*-\s*(.+?)\s*$/);
+                if (om) opts.push(stripQuotes(om[1]));
+                i++;
+              }
+              input.options = opts;
+              continue;
+            }
+          }
+
+          i++;
+        }
+
+        inputs[name] = input;
+        continue;
+      }
+
+      i++;
+    }
+
+    return inputs;
+  }
+
+  function parseTimeoutMinutes(yml) {
+    const m = String(yml || "").match(/timeout-minutes:\s*(\d+)/);
+    return m ? Number(m[1]) : null;
+  }
+
+  function parseEnvSpec(yml) {
+    // These are defined in the "Run Windows RDP Container" step env block in your workflow.
+    const cpu = String(yml || "").match(/^\s*CPU:\s*"?(\d+)"?\s*$/m);
+    const ram = String(yml || "").match(/^\s*RAM:\s*"?(\d+)\s*G"?\s*$/m);
+    const disk = String(yml || "").match(/^\s*DISK:\s*"?(\d+)\s*G"?\s*$/m);
+
+    const out = {};
+    if (cpu) out.CPU = Number(cpu[1]);
+    if (ram) out.RAM_GB = Number(ram[1]);
+    if (disk) out.DISK_GB = Number(disk[1]);
+    return Object.keys(out).length ? out : null;
+  }
+
+  async function syncOptionsFromWorkflowYml() {
+    if (!WORKFLOW_SYNC.enabled) return;
+
+    let yml = "";
+    try {
+      const res = await fetch(`${WORKFLOW_SYNC.ymlPath}?v=${CFG.version}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      yml = await res.text();
+    } catch {
+      // fallback (still matches your uploaded WindowsRDP.yml)
+      applyWorkflowProfile(WORKFLOW_FALLBACK_PROFILE, { source: "fallback" });
+      return;
+    }
+
+    const inputs = parseWorkflowInputsFromYml(yml);
+    const timeoutMinutes = parseTimeoutMinutes(yml);
+    const env = parseEnvSpec(yml);
+
+    const profile = {
+      timeoutMinutes: timeoutMinutes ?? WORKFLOW_FALLBACK_PROFILE.timeoutMinutes,
+      inputs: inputs ?? WORKFLOW_FALLBACK_PROFILE.inputs,
+      env: env ?? WORKFLOW_FALLBACK_PROFILE.env,
+    };
+
+    applyWorkflowProfile(profile, { source: "yml" });
+  }
+
+  function applyWorkflowProfile(profile, { source }) {
+    const p = profile || WORKFLOW_FALLBACK_PROFILE;
+
+    const os = p.inputs?.os_version;
+    const lang = p.inputs?.language;
+
+    const osOptions = Array.isArray(os?.options) && os.options.length ? os.options : WORKFLOW_FALLBACK_PROFILE.inputs.os_version.options;
+    const langOptions = Array.isArray(lang?.options) && lang.options.length ? lang.options : WORKFLOW_FALLBACK_PROFILE.inputs.language.options;
+
+    // Map to existing UI model:
+    // - image => OS options (raw strings)
+    // - region => Language options
+    // - plan is fixed to "free" (we override its spec to match workflow env)
+    CFG.images = osOptions.map((s) => ({ id: s, label: s }));
+    CFG.regions = [...langOptions];
+
+    const cpu = Number(p.env?.CPU ?? WORKFLOW_FALLBACK_PROFILE.env.CPU);
+    const ram = Number(p.env?.RAM_GB ?? WORKFLOW_FALLBACK_PROFILE.env.RAM_GB);
+    const disk = Number(p.env?.DISK_GB ?? WORKFLOW_FALLBACK_PROFILE.env.DISK_GB);
+
+    // Keep "free" id because other parts of the app assume CFG.plans.free exists.
+    CFG.plans = {
+      free: {
+        label: `Docker Windows • ${cpu}vCPU • ${ram}GB RAM`,
+        cpu,
+        ram,
+        disk,
+        pointsPerHour: 50,
+        badge: "Workflow",
+      },
+    };
+
+    // Fixed session duration from workflow timeout
+    const sessionHours = Math.max(1, Math.round((Number(p.timeoutMinutes) || 360) / 60));
+    CFG._workflowSessionHours = sessionHours;
+
+    WORKFLOW_SYNC.loaded = true;
+    WORKFLOW_SYNC.profile = p;
+
+    // Patch duration select to match backend (keep enabled so FormData includes it)
+    const hoursSel = document.querySelector('[data-ui="createVpsForm"] select[name="hours"]');
+    if (hoursSel) {
+      hoursSel.innerHTML = "";
+      const opt = document.createElement("option");
+      opt.value = String(sessionHours);
+      opt.textContent = `${sessionHours} hours (fixed)`;
+      opt.selected = true;
+      hoursSel.appendChild(opt);
+    }
+
+    // Hide plan field in create modal (spec is fixed by backend)
+    const planSel = document.querySelector('[data-ui="createVpsForm"] select[name="plan"]');
+    const planField = planSel?.closest(".field");
+    if (planField) planField.hidden = true;
+
+    // If create modal already hydrated, ensure costs/spec are re-rendered
+    // (safe even if user never opens modal)
+    try {
+      recalcCreateCost();
+    } catch {
+      // ignore
+    }
+
+    // Optional UX nudge (only once)
+    if (source === "yml") {
+      // don't toast aggressively; only if user is on settings
+      // (we keep it quiet by default)
+    }
+  }
+
+  function osLabelById(osId) {
+    return CFG.images.find((x) => x.id === osId)?.label || String(osId || "—");
+  }
+
 
   // ---------------------------------------------------------
   // DOM helpers
@@ -208,21 +336,13 @@
 
   const nf = new Intl.NumberFormat(undefined);
 
-  function clamp(n, a, b) {
-    return Math.max(a, Math.min(b, n));
-  }
+  function clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }
 
-  function randInt(min, max) {
-    return Math.floor(min + Math.random() * (max - min + 1));
-  }
+  function randInt(min, max) { return Math.floor(min + Math.random() * (max - min + 1)); }
 
-  function now() {
-    return Date.now();
-  }
+  function now() { return Date.now(); }
 
-  function pad2(n) {
-    return String(n).padStart(2, "0");
-  }
+  function pad2(n) { return String(n).padStart(2, "0"); }
 
   function formatHHMMSS(totalSec) {
     const s = Math.max(0, Math.floor(totalSec));
@@ -241,10 +361,7 @@
 
   function fmtShortTime(ts) {
     try {
-      return new Intl.DateTimeFormat(undefined, {
-        hour: "2-digit",
-        minute: "2-digit",
-      }).format(new Date(ts));
+      return new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit" }).format(new Date(ts));
     } catch {
       return "";
     }
@@ -291,16 +408,7 @@
   }
 
   function randomHostname() {
-    const a = [
-      "nova",
-      "nebula",
-      "orion",
-      "atlas",
-      "zen",
-      "luna",
-      "aero",
-      "vertex",
-    ];
+    const a = ["nova", "nebula", "orion", "atlas", "zen", "luna", "aero", "vertex"];
     const b = ["node", "vps", "edge", "cloud", "core", "spark"];
     return `${a[randInt(0, a.length - 1)]}-${b[randInt(0, b.length - 1)]}-${randInt(10, 99)}`;
   }
@@ -329,9 +437,7 @@
   }
 
   function downloadJson(filename, obj) {
-    const blob = new Blob([JSON.stringify(obj, null, 2)], {
-      type: "application/json",
-    });
+    const blob = new Blob([JSON.stringify(obj, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -386,8 +492,8 @@
   // ---------------------------------------------------------
   function defaultPrefs() {
     return {
-      theme: "light", // light | dark | auto
-      accent: "blue", // blue | purple | cyan
+      theme: "light",      // light | dark | auto
+      accent: "blue",      // blue | purple | cyan
       density: "comfortable", // comfortable | compact
       reduceMotion: false,
       sound: false,
@@ -448,12 +554,7 @@
       ledger: [],
       vps: { selectedId: null, instances: [] },
       security: { twoFaEnabled: false },
-      ui: {
-        lastView: "home",
-        dashTab: "overview",
-        ledgerFilter: "",
-        instanceSearch: "",
-      },
+      ui: { lastView: "home", dashTab: "overview", ledgerFilter: "", instanceSearch: "" },
       promoClaimed: {},
       refCode: "",
     };
@@ -478,8 +579,7 @@
     const app = appLike;
     if (!app.meta) app.meta = { createdAt: now(), updatedAt: now() };
     if (!app.meta.prefs) app.meta.prefs = defaultPrefs();
-    if (typeof app.meta.onboardingDone !== "boolean")
-      app.meta.onboardingDone = false;
+    if (typeof app.meta.onboardingDone !== "boolean") app.meta.onboardingDone = false;
     if (!app.meta.resetTokens) app.meta.resetTokens = {};
 
     if (!app.users) app.users = {};
@@ -574,8 +674,7 @@
 
     // Ensure ref code
     if (!d.refCode) {
-      const part =
-        userId.replace(/[^\w]/g, "").slice(-6).toUpperCase() || "XXXXXX";
+      const part = userId.replace(/[^\w]/g, "").slice(-6).toUpperCase() || "XXXXXX";
       d.refCode = `CLOUD-${part}`;
     }
 
@@ -605,12 +704,7 @@
     const root = document.documentElement;
 
     // theme (auto follows media)
-    const theme =
-      p.theme === "auto"
-        ? matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light"
-        : p.theme;
+    const theme = p.theme === "auto" ? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : p.theme;
     root.dataset.theme = theme;
     root.dataset.accent = p.accent || "blue";
     root.dataset.density = p.density || "comfortable";
@@ -622,12 +716,9 @@
   }
 
   // React to OS theme changes when auto
-  matchMedia("(prefers-color-scheme: dark)").addEventListener?.(
-    "change",
-    () => {
-      if (app.meta.prefs?.theme === "auto") applyPrefs();
-    },
-  );
+  matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", () => {
+    if (app.meta.prefs?.theme === "auto") applyPrefs();
+  });
 
   // ---------------------------------------------------------
   // Level / XP
@@ -640,16 +731,8 @@
     const lvl = Math.floor(Math.sqrt(xp / 100)) + 1;
     const currentBase = (lvl - 1) * (lvl - 1) * 100;
     const nextBase = lvl * lvl * 100;
-    const progress =
-      nextBase === currentBase
-        ? 0
-        : (xp - currentBase) / (nextBase - currentBase);
-    return {
-      level: lvl,
-      currentBase,
-      nextBase,
-      progress: clamp(progress, 0, 1),
-    };
+    const progress = nextBase === currentBase ? 0 : (xp - currentBase) / (nextBase - currentBase);
+    return { level: lvl, currentBase, nextBase, progress: clamp(progress, 0, 1) };
   }
 
   // ---------------------------------------------------------
@@ -706,10 +789,7 @@
     }
 
     d.achievements.claimed[id] = true;
-    addPoints(d, ach.reward, `Achievement: ${ach.title}`, "earn", {
-      kind: "achievement",
-      id,
-    });
+    addPoints(d, ach.reward, `Achievement: ${ach.title}`, "earn", { kind: "achievement", id });
     toast(`+${ach.reward} pts claimed`, "good");
     persistSoon();
     renderAll();
@@ -720,10 +800,7 @@
     for (const ach of CFG.achievements) {
       if (d.achievements.unlocked[ach.id] && !d.achievements.claimed[ach.id]) {
         d.achievements.claimed[ach.id] = true;
-        addPoints(d, ach.reward, `Achievement: ${ach.title}`, "earn", {
-          kind: "achievement",
-          id: ach.id,
-        });
+        addPoints(d, ach.reward, `Achievement: ${ach.title}`, "earn", { kind: "achievement", id: ach.id });
         claimedAny = true;
       }
     }
@@ -799,10 +876,7 @@
 
   function ensureEnoughPoints(d, cost) {
     if (d.pointsBalance >= cost) return true;
-    toast(
-      `Not enough points. Need ${nf.format(cost - d.pointsBalance)} more.`,
-      "warn",
-    );
+    toast(`Not enough points. Need ${nf.format(cost - d.pointsBalance)} more.`, "warn");
     return false;
   }
 
@@ -835,30 +909,10 @@
 
   function generateOffers() {
     const pool = [
-      {
-        ico: "🧪",
-        title: "Install a browser extension",
-        reward: 12,
-        eta: "2–3 min",
-      },
-      {
-        ico: "📝",
-        title: "Complete a quick survey",
-        reward: 18,
-        eta: "3–4 min",
-      },
-      {
-        ico: "🎮",
-        title: "Play a game for 2 minutes",
-        reward: 14,
-        eta: "2–3 min",
-      },
-      {
-        ico: "📱",
-        title: "Open an app landing page",
-        reward: 9,
-        eta: "1–2 min",
-      },
+      { ico: "🧪", title: "Install a browser extension", reward: 12, eta: "2–3 min" },
+      { ico: "📝", title: "Complete a quick survey", reward: 18, eta: "3–4 min" },
+      { ico: "🎮", title: "Play a game for 2 minutes", reward: 14, eta: "2–3 min" },
+      { ico: "📱", title: "Open an app landing page", reward: 9, eta: "1–2 min" },
       { ico: "🧩", title: "Solve a tiny puzzle", reward: 11, eta: "1–2 min" },
       { ico: "🛍️", title: "Visit a store page", reward: 8, eta: "1–2 min" },
       { ico: "📺", title: "Watch a longer video", reward: 22, eta: "4–5 min" },
@@ -885,12 +939,7 @@
 
   function ensureOffers(d, force = false) {
     const today = utcDateKey();
-    if (
-      force ||
-      d.offers.utcDate !== today ||
-      !Array.isArray(d.offers.items) ||
-      d.offers.items.length === 0
-    ) {
+    if (force || d.offers.utcDate !== today || !Array.isArray(d.offers.items) || d.offers.items.length === 0) {
       d.offers.utcDate = today;
       d.offers.items = generateOffers();
       d.offers.claimed = {};
@@ -954,49 +1003,26 @@
     await sleep(randInt(CFG.simulateDelayMs.min, CFG.simulateDelayMs.max));
 
     if (type === "video") {
-      addPoints(d, CFG.tasks.video.reward, CFG.tasks.video.label, "earn", {
-        kind: "task",
-        task: "video",
-      });
-      d.tasks.video.cooldownUntilMs =
-        now() + CFG.tasks.video.cooldownSec * 1000;
+      addPoints(d, CFG.tasks.video.reward, CFG.tasks.video.label, "earn", { kind: "task", task: "video" });
+      d.tasks.video.cooldownUntilMs = now() + CFG.tasks.video.cooldownSec * 1000;
       d.stats.videoWatched += 1;
 
       // chain
       updateVideoChain(d);
 
-      pushNotif(d, {
-        kind: "good",
-        title: "+5 points",
-        body: "Video ad completed.",
-      });
+      pushNotif(d, { kind: "good", title: "+5 points", body: "Video ad completed." });
       toast("+5 points earned", "good");
     } else if (type === "short") {
-      addPoints(d, CFG.tasks.short.reward, CFG.tasks.short.label, "earn", {
-        kind: "task",
-        task: "short",
-      });
-      d.tasks.short.cooldownUntilMs =
-        now() + CFG.tasks.short.cooldownSec * 1000;
+      addPoints(d, CFG.tasks.short.reward, CFG.tasks.short.label, "earn", { kind: "task", task: "short" });
+      d.tasks.short.cooldownUntilMs = now() + CFG.tasks.short.cooldownSec * 1000;
       d.stats.shortCompleted += 1;
 
-      pushNotif(d, {
-        kind: "good",
-        title: "+2 points",
-        body: "Short link verified.",
-      });
+      pushNotif(d, { kind: "good", title: "+2 points", body: "Short link verified." });
       toast("+2 points earned", "good");
     } else if (type === "daily") {
       d.daily.dailyClaimedUtcDate = today;
-      addPoints(d, CFG.tasks.daily.reward, CFG.tasks.daily.label, "earn", {
-        kind: "task",
-        task: "daily",
-      });
-      pushNotif(d, {
-        kind: "good",
-        title: "+10 points",
-        body: "Daily mission claimed.",
-      });
+      addPoints(d, CFG.tasks.daily.reward, CFG.tasks.daily.label, "earn", { kind: "task", task: "daily" });
+      pushNotif(d, { kind: "good", title: "+10 points", body: "Daily mission claimed." });
       toast("+10 daily points", "good");
     } else if (type === "checkin") {
       // streak logic: consecutive days by UTC date
@@ -1014,16 +1040,8 @@
       d.daily.checkinClaimedUtcDate = today;
 
       const reward = computeCheckinReward(d);
-      addPoints(d, reward, CFG.tasks.checkin.label, "earn", {
-        kind: "task",
-        task: "checkin",
-        streak: d.daily.streakCount,
-      });
-      pushNotif(d, {
-        kind: "good",
-        title: `+${reward} points`,
-        body: `Check-in complete. Streak: ${d.daily.streakCount} day(s).`,
-      });
+      addPoints(d, reward, CFG.tasks.checkin.label, "earn", { kind: "task", task: "checkin", streak: d.daily.streakCount });
+      pushNotif(d, { kind: "good", title: `+${reward} points`, body: `Check-in complete. Streak: ${d.daily.streakCount} day(s).` });
       toast(`Check-in +${reward} pts`, "good");
     }
 
@@ -1045,15 +1063,8 @@
 
     if (d.daily.videoChainCount >= CFG.videoChain.target) {
       d.daily.videoChainCount = 0;
-      addPoints(d, CFG.videoChain.bonus, "Video chain bonus", "earn", {
-        kind: "bonus",
-        task: "videoChain",
-      });
-      pushNotif(d, {
-        kind: "good",
-        title: `Chain bonus +${CFG.videoChain.bonus}`,
-        body: "Watched 3 ads in time. Bonus granted.",
-      });
+      addPoints(d, CFG.videoChain.bonus, "Video chain bonus", "earn", { kind: "bonus", task: "videoChain" });
+      pushNotif(d, { kind: "good", title: `Chain bonus +${CFG.videoChain.bonus}`, body: "Watched 3 ads in time. Bonus granted." });
       toast(`Chain bonus +${CFG.videoChain.bonus} pts`, "good");
     }
   }
@@ -1083,25 +1094,13 @@
     const btn = $(`[data-offer-id="${offerId}"]`);
     if (btn) setBtnLoading(btn, true, "Verifying…");
 
-    await sleep(
-      randInt(CFG.simulateDelayMs.min + 200, CFG.simulateDelayMs.max + 400),
-    );
+    await sleep(randInt(CFG.simulateDelayMs.min + 200, CFG.simulateDelayMs.max + 400));
 
     d.offers.claimed[offerId] = true;
     d.stats.offersCompleted += 1;
-    addPoints(
-      d,
-      offer.reward,
-      `${CFG.tasks.offer.label}: ${offer.title}`,
-      "earn",
-      { kind: "offer", offerId },
-    );
+    addPoints(d, offer.reward, `${CFG.tasks.offer.label}: ${offer.title}`, "earn", { kind: "offer", offerId });
 
-    pushNotif(d, {
-      kind: "good",
-      title: `Offer complete +${offer.reward}`,
-      body: offer.title,
-    });
+    pushNotif(d, { kind: "good", title: `Offer complete +${offer.reward}`, body: offer.title });
     toast(`+${offer.reward} pts`, "good");
 
     if (btn) setBtnLoading(btn, false);
@@ -1120,9 +1119,7 @@
       return;
     }
 
-    const code = String(codeRaw || "")
-      .trim()
-      .toUpperCase();
+    const code = String(codeRaw || "").trim().toUpperCase();
     if (!code) {
       toast("Enter a promo code.", "info");
       return;
@@ -1140,15 +1137,8 @@
     }
 
     d.promoClaimed[code] = true;
-    addPoints(d, cfg.reward, `Promo code: ${code}`, "earn", {
-      kind: "promo",
-      code,
-    });
-    pushNotif(d, {
-      kind: "good",
-      title: `Promo redeemed +${cfg.reward}`,
-      body: `${code} — ${cfg.label}`,
-    });
+    addPoints(d, cfg.reward, `Promo code: ${code}`, "earn", { kind: "promo", code });
+    pushNotif(d, { kind: "good", title: `Promo redeemed +${cfg.reward}`, body: `${code} — ${cfg.label}` });
     toast(`+${cfg.reward} pts`, "good");
 
     persistSoon();
@@ -1174,11 +1164,7 @@
     d.daily.referralsToday += 1;
     d.stats.referrals += 1;
     addPoints(d, 30, "Referral bonus", "earn", { kind: "referral" });
-    pushNotif(d, {
-      kind: "good",
-      title: "Referral +30",
-      body: "A friend signed up with your code.",
-    });
+    pushNotif(d, { kind: "good", title: "Referral +30", body: "A friend signed up with your code." });
     toast("+30 referral points", "good");
 
     persistSoon();
@@ -1199,18 +1185,11 @@
   }
 
   function countRunning(d) {
-    return d.vps.instances.reduce(
-      (acc, i) => acc + (i.status === "running" ? 1 : 0),
-      0,
-    );
+    return d.vps.instances.reduce((acc, i) => acc + (i.status === "running" ? 1 : 0), 0);
   }
 
   function otherRunningInstance(d, excludeId) {
-    return (
-      d.vps.instances.find(
-        (i) => i.status === "running" && i.id !== excludeId,
-      ) || null
-    );
+    return d.vps.instances.find((i) => i.status === "running" && i.id !== excludeId) || null;
   }
 
   function selectInstance(d, id) {
@@ -1239,10 +1218,7 @@
     normalizeDaily(d);
 
     if (d.vps.instances.length >= CFG.maxInstances) {
-      toast(
-        `Max instances reached (${CFG.maxInstances}). Destroy one first.`,
-        "warn",
-      );
+      toast(`Max instances reached (${CFG.maxInstances}). Destroy one first.`, "warn");
       return;
     }
 
@@ -1257,11 +1233,7 @@
     if (!ensureEnoughPoints(d, cost)) return;
 
     // spend
-    addPoints(d, -cost, `Redeemed VPS (${hours}h)`, "spend", {
-      kind: "redeem",
-      plan,
-      hours,
-    });
+    addPoints(d, -cost, `Redeemed VPS (${hours}h)`, "spend", { kind: "redeem", plan, hours });
 
     const inst = {
       id: uid("vps"),
@@ -1283,11 +1255,7 @@
     d.vps.selectedId = inst.id;
     d.stats.vpsCreated += 1;
 
-    pushNotif(d, {
-      kind: "info",
-      title: "Provisioning VPS…",
-      body: `${inst.name} (${planSpec(plan).label})`,
-    });
+    pushNotif(d, { kind: "info", title: "Provisioning VPS…", body: `${inst.name} (${planSpec(plan).label})` });
     toast("Provisioning VPS…", "info");
 
     persistSoon();
@@ -1307,18 +1275,10 @@
 
     if (inst.status === "running") {
       toast("VPS is running. Countdown started.", "good");
-      pushNotif(d, {
-        kind: "good",
-        title: "VPS running",
-        body: `${inst.name} is live.`,
-      });
+      pushNotif(d, { kind: "good", title: "VPS running", body: `${inst.name} is live.` });
     } else {
       toast("Created. Start is paused (another instance is running).", "warn");
-      pushNotif(d, {
-        kind: "warn",
-        title: "VPS created (paused)",
-        body: "Stop the running instance to start this one.",
-      });
+      pushNotif(d, { kind: "warn", title: "VPS created (paused)", body: "Stop the running instance to start this one." });
     }
 
     persistSoon();
@@ -1366,11 +1326,7 @@
           other.lastTickMs = now();
           inst.status = "running";
           inst.lastTickMs = now();
-          pushNotif(d, {
-            kind: "info",
-            title: "Switched instance",
-            body: `${inst.name} is now running.`,
-          });
+          pushNotif(d, { kind: "info", title: "Switched instance", body: `${inst.name} is now running.` });
           toast("Switched running instance.", "good");
           persistSoon();
           renderAll();
@@ -1381,11 +1337,7 @@
 
     inst.status = "running";
     inst.lastTickMs = now();
-    pushNotif(d, {
-      kind: "good",
-      title: "VPS resumed",
-      body: `${inst.name} is running.`,
-    });
+    pushNotif(d, { kind: "good", title: "VPS resumed", body: `${inst.name} is running.` });
     toast("VPS resumed.", "good");
     persistSoon();
     renderAll();
@@ -1412,11 +1364,7 @@
       onConfirm: () => {
         inst.status = "stopped";
         inst.lastTickMs = now();
-        pushNotif(d, {
-          kind: "warn",
-          title: "VPS stopped",
-          body: `${inst.name} timer paused.`,
-        });
+        pushNotif(d, { kind: "warn", title: "VPS stopped", body: `${inst.name} timer paused.` });
         toast("VPS stopped.", "warn");
         persistSoon();
         renderAll();
@@ -1470,11 +1418,7 @@
           d.vps.selectedId = d.vps.instances[0]?.id || null;
         }
 
-        pushNotif(d, {
-          kind: "warn",
-          title: "Instance destroyed",
-          body: inst.name,
-        });
+        pushNotif(d, { kind: "warn", title: "Instance destroyed", body: inst.name });
         toast("Instance destroyed.", "warn");
 
         persistSoon();
@@ -1498,19 +1442,11 @@
 
     if (!ensureEnoughPoints(d, cost)) return;
 
-    addPoints(d, -cost, `Extended time (+${h}h)`, "spend", {
-      kind: "extend",
-      hours: h,
-      inst: inst.id,
-    });
+    addPoints(d, -cost, `Extended time (+${h}h)`, "spend", { kind: "extend", hours: h, inst: inst.id });
     inst.timeLeftSec += h * 3600;
     inst.lastTickMs = now();
 
-    pushNotif(d, {
-      kind: "good",
-      title: "Time extended",
-      body: `${inst.name} +${h}h`,
-    });
+    pushNotif(d, { kind: "good", title: "Time extended", body: `${inst.name} +${h}h` });
     toast(`Extended +${h}h`, "good");
 
     persistSoon();
@@ -1537,11 +1473,7 @@
       if (inst.timeLeftSec <= 0) {
         inst.timeLeftSec = 0;
         inst.status = "stopped";
-        pushNotif(d, {
-          kind: "warn",
-          title: "Time ended",
-          body: `${inst.name} stopped.`,
-        });
+        pushNotif(d, { kind: "warn", title: "Time ended", body: `${inst.name} stopped.` });
         if (app.meta.prefs?.tips) toast("Time ended. VPS stopped.", "warn");
       }
     }
@@ -1564,16 +1496,8 @@
       }
 
       const cpu = clamp((inst.metrics.cpuPct || 15) + randInt(-10, 12), 5, 95);
-      const ramUsed = clamp(
-        (inst.metrics.ramUsed || spec.ram * 0.3) + randInt(-8, 10) / 100,
-        0.2,
-        spec.ram * 0.92,
-      );
-      const diskUsed = clamp(
-        (inst.metrics.diskUsed || spec.disk * 0.6) + randInt(-5, 7) / 100,
-        0.2,
-        spec.disk * 0.98,
-      );
+      const ramUsed = clamp((inst.metrics.ramUsed || spec.ram * 0.3) + randInt(-8, 10) / 100, 0.2, spec.ram * 0.92);
+      const diskUsed = clamp((inst.metrics.diskUsed || spec.disk * 0.6) + randInt(-5, 7) / 100, 0.2, spec.disk * 0.98);
 
       inst.metrics.cpuPct = cpu;
       inst.metrics.ramUsed = ramUsed;
@@ -1760,10 +1684,7 @@
     // close any open
     closeModal();
 
-    lastFocus =
-      document.activeElement instanceof HTMLElement
-        ? document.activeElement
-        : null;
+    lastFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
 
     modalHost?.setAttribute("aria-hidden", "false");
     el.hidden = false;
@@ -1800,10 +1721,8 @@
   function getFocusable(root) {
     return $$(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-      root,
-    ).filter(
-      (el) => !el.hasAttribute("disabled") && !el.getAttribute("aria-hidden"),
-    );
+      root
+    ).filter((el) => !el.hasAttribute("disabled") && !el.getAttribute("aria-hidden"));
   }
 
   // basic focus trap when a modal is open
@@ -1862,9 +1781,7 @@
     }
   }
 
-  function sleep(ms) {
-    return new Promise((r) => setTimeout(r, ms));
-  }
+  function sleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
 
   // ---------------------------------------------------------
   // Routing
@@ -1908,8 +1825,7 @@
     const raw = (location.hash || "").replace("#", "").trim();
     if (CFG.views.includes(raw)) return raw;
     const d = currentData();
-    if (d?.ui?.lastView && CFG.views.includes(d.ui.lastView))
-      return d.ui.lastView;
+    if (d?.ui?.lastView && CFG.views.includes(d.ui.lastView)) return d.ui.lastView;
     return "home";
   }
 
@@ -1966,22 +1882,10 @@
     ui.authNameField.hidden = mode !== "register";
     ui.authResetField.hidden = mode !== "reset";
     const pwdInput = $('[name="password"]', form);
-    if (pwdInput)
-      pwdInput.autocomplete =
-        mode === "register" ? "new-password" : "current-password";
+    if (pwdInput) pwdInput.autocomplete = mode === "register" ? "new-password" : "current-password";
 
-    safeText(
-      ui.authTitle,
-      mode === "login"
-        ? "Sign in"
-        : mode === "register"
-          ? "Create account"
-          : "Reset password",
-    );
-    safeText(
-      ui.authSubmitLabel,
-      mode === "login" ? "Sign in" : mode === "register" ? "Register" : "Reset",
-    );
+    safeText(ui.authTitle, mode === "login" ? "Sign in" : mode === "register" ? "Create account" : "Reset password");
+    safeText(ui.authSubmitLabel, mode === "login" ? "Sign in" : mode === "register" ? "Register" : "Reset");
 
     // change forgot button visibility
     const forgotBtn = $('[data-action="forgotPassword"]', form);
@@ -2006,11 +1910,7 @@
     // unlock first_login
     if (!d.achievements.unlocked.first_login) {
       d.achievements.unlocked.first_login = now();
-      pushNotif(d, {
-        kind: "good",
-        title: "Welcome!",
-        body: "Achievement unlocked. Claim it in Achievements.",
-      });
+      pushNotif(d, { kind: "good", title: "Welcome!", body: "Achievement unlocked. Claim it in Achievements." });
     }
 
     persistSoon();
@@ -2045,10 +1945,7 @@
     app.users[id] = {
       id,
       email: e,
-      name:
-        String(name || "User")
-          .trim()
-          .slice(0, 32) || "User",
+      name: String(name || "User").trim().slice(0, 32) || "User",
       passHash: fnv1a(String(password)),
       provider: "email",
       createdAt: now(),
@@ -2159,9 +2056,7 @@
 
   function setDensity(value) {
     const v = String(value || "comfortable");
-    app.meta.prefs.density = ["comfortable", "compact"].includes(v)
-      ? v
-      : "comfortable";
+    app.meta.prefs.density = ["comfortable", "compact"].includes(v) ? v : "comfortable";
     persistSoon();
     applyPrefs();
   }
@@ -2180,9 +2075,7 @@
       toast("Sign in to edit profile.", "warn");
       return;
     }
-    const name = String(ui.displayNameInput?.value || "")
-      .trim()
-      .slice(0, 32);
+    const name = String(ui.displayNameInput?.value || "").trim().slice(0, 32);
     if (!name) {
       toast("Name cannot be empty.", "warn");
       return;
@@ -2201,10 +2094,7 @@
     }
     d.security.twoFaEnabled = !d.security.twoFaEnabled;
     persistSoon();
-    toast(
-      d.security.twoFaEnabled ? "2FA enabled (demo)." : "2FA disabled (demo).",
-      "info",
-    );
+    toast(d.security.twoFaEnabled ? "2FA enabled (demo)." : "2FA disabled (demo).", "info");
     renderAll();
   }
 
@@ -2267,8 +2157,7 @@
   function renderNotifications() {
     const d = currentData();
     if (!d || !ui.notifList) {
-      if (ui.notifList)
-        ui.notifList.innerHTML = `<li class="muted small">Login required.</li>`;
+      if (ui.notifList) ui.notifList.innerHTML = `<li class="muted small">Login required.</li>`;
       return;
     }
 
@@ -2370,10 +2259,7 @@
     safeText(ui.createBalance, nf.format(d?.pointsBalance ?? 0));
 
     const spec = planSpec(plan);
-    safeText(
-      ui.createSpec,
-      `${spec.cpu} vCPU • ${spec.ram}GB RAM • ${spec.disk}GB SSD • ${spec.pointsPerHour} pts/h`,
-    );
+    safeText(ui.createSpec, `${spec.cpu} vCPU • ${spec.ram}GB RAM • ${spec.disk}GB SSD • ${spec.pointsPerHour} pts/h`);
 
     if (ui.createSubmitBtn) {
       ui.createSubmitBtn.disabled = !d || d.pointsBalance < cost;
@@ -2452,8 +2338,7 @@
 
     const pct = clamp((points / redeemTarget) * 100, 0, 100);
     if (ui.redeemProgressFill) ui.redeemProgressFill.style.width = `${pct}%`;
-    if (ui.redeemProgressFillAside)
-      ui.redeemProgressFillAside.style.width = `${pct}%`;
+    if (ui.redeemProgressFillAside) ui.redeemProgressFillAside.style.width = `${pct}%`;
 
     // time pill
     const inst = d ? getSelectedInstance(d) : null;
@@ -2583,9 +2468,7 @@
       return;
     }
 
-    const filter = String(ui.ledgerFilter?.value || d.ui.ledgerFilter || "")
-      .trim()
-      .toLowerCase();
+    const filter = String(ui.ledgerFilter?.value || d.ui.ledgerFilter || "").trim().toLowerCase();
     d.ui.ledgerFilter = filter;
     persistSoon();
 
@@ -2658,8 +2541,7 @@
     safeText(ui.levelAside, nf.format(level));
     safeText(ui.xp, nf.format(xp));
     safeText(ui.xpToNext, nf.format(Math.max(0, nextBase - xp)));
-    if (ui.levelFill)
-      ui.levelFill.style.width = `${Math.round(progress * 100)}%`;
+    if (ui.levelFill) ui.levelFill.style.width = `${Math.round(progress * 100)}%`;
 
     if (!d) {
       // clear dashboard fields
@@ -2719,27 +2601,16 @@
     }
 
     // status
-    const statusText =
-      inst.status === "running"
-        ? "Running"
-        : inst.status === "provisioning"
-          ? "Provisioning"
-          : "Stopped";
+    const statusText = inst.status === "running" ? "Running" : inst.status === "provisioning" ? "Provisioning" : "Stopped";
     safeText(ui.vpsStatus, statusText);
     safeText(ui.instanceName, inst.name);
-    safeText(ui.planLabel, `Plan: ${planSpec(inst.plan).label}`);
-    safeText(
-      ui.imageLabel,
-      CFG.images.find((x) => x.id === inst.image)?.label || inst.image,
-    );
+    safeText(ui.planLabel, `Specs: ${planSpec(inst.plan).label}`);
+    safeText(ui.imageLabel, CFG.images.find((x) => x.id === inst.image)?.label || inst.image);
 
     // status dot
     if (ui.statusDot) {
       ui.statusDot.classList.toggle("running", inst.status === "running");
-      ui.statusDot.classList.toggle(
-        "provisioning",
-        inst.status === "provisioning",
-      );
+      ui.statusDot.classList.toggle("provisioning", inst.status === "provisioning");
       ui.statusDot.classList.toggle("stopped", inst.status === "stopped");
     }
 
@@ -2758,22 +2629,17 @@
 
     const ramUsed = inst.metrics.ramUsed || 0;
     safeText(ui.ramUsed, ramUsed.toFixed(1));
-    if (ui.ramFill)
-      ui.ramFill.style.width = `${clamp((ramUsed / spec.ram) * 100, 0, 100)}%`;
+    if (ui.ramFill) ui.ramFill.style.width = `${clamp((ramUsed / spec.ram) * 100, 0, 100)}%`;
 
     const diskUsed = inst.metrics.diskUsed || 0;
     safeText(ui.diskUsed, diskUsed.toFixed(1));
-    if (ui.diskFill)
-      ui.diskFill.style.width = `${clamp((diskUsed / spec.disk) * 100, 0, 100)}%`;
+    if (ui.diskFill) ui.diskFill.style.width = `${clamp((diskUsed / spec.disk) * 100, 0, 100)}%`;
 
     // system info
     safeText(ui.region, inst.region);
     safeText(ui.ipv4, inst.ipv4 || "—");
     safeText(ui.hostname, inst.hostname || "—");
-    safeText(
-      ui.createdAt,
-      inst.createdAt ? new Date(inst.createdAt).toLocaleString() : "—",
-    );
+    safeText(ui.createdAt, inst.createdAt ? new Date(inst.createdAt).toLocaleString() : "—");
 
     // extend hint based on plan
     const extendCost = vpsCost(inst.plan, 1);
@@ -2798,10 +2664,8 @@
       return;
     }
 
-    const w = 120,
-      h = 36;
-    const minV = 0,
-      maxV = 100;
+    const w = 120, h = 36;
+    const minV = 0, maxV = 100;
 
     const pts = values.map((v, idx) => {
       const x = (idx / Math.max(1, values.length - 1)) * (w - 2) + 1;
@@ -2829,20 +2693,19 @@
   function renderInstanceTable(d) {
     if (!ui.instanceTable) return;
 
-    const q = String(ui.instanceSearch?.value || d.ui.instanceSearch || "")
-      .trim()
-      .toLowerCase();
+    const q = String(ui.instanceSearch?.value || d.ui.instanceSearch || "").trim().toLowerCase();
     d.ui.instanceSearch = q;
     persistSoon();
 
     const items = d.vps.instances
-      .filter(
-        (i) =>
-          !q ||
-          i.name.toLowerCase().includes(q) ||
-          planSpec(i.plan).label.toLowerCase().includes(q) ||
-          i.region.toLowerCase().includes(q),
-      )
+      .filter((i) => {
+        if (!q) return true;
+        const name = i.name.toLowerCase();
+        const os = osLabelById(i.image).toLowerCase();
+        const lang = String(i.region || "").toLowerCase();
+        const spec = planSpec(i.plan).label.toLowerCase();
+        return name.includes(q) || os.includes(q) || lang.includes(q) || spec.includes(q);
+      })
       .slice(0, 20);
 
     ui.instanceTable.innerHTML = "";
@@ -2853,22 +2716,13 @@
 
     for (const i of items) {
       const row = document.createElement("div");
-      row.className =
-        `table__row ${i.id === d.vps.selectedId ? "is-active" : ""}`.trim();
-      const st =
-        i.status === "running"
-          ? "Running"
-          : i.status === "provisioning"
-            ? "Provisioning"
-            : "Stopped";
+      row.className = `table__row ${i.id === d.vps.selectedId ? "is-active" : ""}`.trim();
+      const st = i.status === "running" ? "Running" : i.status === "provisioning" ? "Provisioning" : "Stopped";
       row.setAttribute("role", "row");
       row.setAttribute("data-action", "selectInstanceRow");
       row.setAttribute("data-id", i.id);
 
-      const canStart =
-        i.status !== "running" &&
-        i.status !== "provisioning" &&
-        i.timeLeftSec > 0;
+      const canStart = i.status !== "running" && i.status !== "provisioning" && i.timeLeftSec > 0;
       const startLabel = i.status === "running" ? "Running" : "Start";
       const stopLabel = i.status === "running" ? "Stop" : "—";
 
@@ -2877,7 +2731,7 @@
           <strong>${escapeHTML(i.name)}</strong>
           <div class="muted small">${escapeHTML(i.hostname || "—")}</div>
         </div>
-        <div role="cell">${escapeHTML(planSpec(i.plan).label)}</div>
+        <div role="cell">${escapeHTML(osLabelById(i.image))}</div>
         <div role="cell">${escapeHTML(i.region)}</div>
         <div role="cell"><span class="pill ${i.status === "running" ? "pill-good" : "pill-soft"}">${escapeHTML(st)}</span></div>
         <div role="cell" class="mono">${escapeHTML(formatHHMMSS(i.timeLeftSec))}</div>
@@ -2953,8 +2807,7 @@
     const h = 220;
     const pad = 16;
 
-    const minV = 0,
-      maxV = 100;
+    const minV = 0, maxV = 100;
 
     const pts = values.map((v, idx) => {
       const x = pad + (idx / Math.max(1, values.length - 1)) * (w - pad * 2);
@@ -2963,8 +2816,7 @@
     });
 
     let dPath = `M ${pts[0][0].toFixed(2)} ${pts[0][1].toFixed(2)}`;
-    for (let i = 1; i < pts.length; i++)
-      dPath += ` L ${pts[i][0].toFixed(2)} ${pts[i][1].toFixed(2)}`;
+    for (let i = 1; i < pts.length; i++) dPath += ` L ${pts[i][0].toFixed(2)} ${pts[i][1].toFixed(2)}`;
 
     const svg = `
       <svg class="chart__svg" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">
@@ -3000,8 +2852,7 @@
       const pct = clamp((current / goal) * 100, 0, 100);
 
       const el = document.createElement("div");
-      el.className =
-        `ach ${claimed ? "is-claimed" : unlocked ? "is-unlocked" : "is-locked"}`.trim();
+      el.className = `ach ${claimed ? "is-claimed" : unlocked ? "is-unlocked" : "is-locked"}`.trim();
 
       el.innerHTML = `
         <div class="ach__top">
@@ -3054,9 +2905,7 @@
     }
 
     if (ui.twoFaLabel) {
-      ui.twoFaLabel.textContent = d?.security.twoFaEnabled
-        ? "Disable 2FA"
-        : "Enable 2FA";
+      ui.twoFaLabel.textContent = d?.security.twoFaEnabled ? "Disable 2FA" : "Enable 2FA";
     }
   }
 
@@ -3064,102 +2913,25 @@
   // Command palette
   // ---------------------------------------------------------
   const commands = [
-    {
-      id: "goHome",
-      title: "Go to Home",
-      sub: "Landing view",
-      run: () => setActiveView("home"),
-    },
-    {
-      id: "goEarn",
-      title: "Go to Earn",
-      sub: "Tasks & rewards",
-      run: () => setActiveView("earn"),
-    },
-    {
-      id: "goDashboard",
-      title: "Go to Dashboard",
-      sub: "VPS management",
-      run: () => setActiveView("dashboard"),
-    },
-    {
-      id: "goSettings",
-      title: "Go to Settings",
-      sub: "Personalize UI",
-      run: () => setActiveView("settings"),
-    },
-    {
-      id: "openAuth",
-      title: "Login / Register",
-      sub: "Sign in",
-      run: () => openAuthModal("login"),
-    },
-    {
-      id: "openNotifications",
-      title: "Notifications",
-      sub: "Open inbox",
-      run: () => openModal("notifications"),
-    },
-    {
-      id: "openCreateVps",
-      title: "Create VPS",
-      sub: "Redeem points",
-      run: () => openModal("createVps"),
-    },
-    {
-      id: "resumeVps",
-      title: "Start/Resume selected",
-      sub: "Begin countdown",
-      run: () => createOrResumeSelected(),
-    },
-    {
-      id: "extendVps",
-      title: "Extend selected",
-      sub: "Add hours using points",
-      run: () => openExtendModal(),
-    },
-    {
-      id: "stopVps",
-      title: "Stop selected",
-      sub: "Pause timer",
-      run: () => stopSelectedWithConfirm(),
-    },
-    {
-      id: "openSsh",
-      title: "SSH",
-      sub: "Copy connection commands",
-      run: () => openModal("ssh"),
-    },
-    {
-      id: "openAchievements",
-      title: "Achievements",
-      sub: "Claim rewards",
-      run: () => openModal("achievements"),
-    },
-    {
-      id: "exportData",
-      title: "Export data",
-      sub: "Download JSON",
-      run: () => exportData(),
-    },
-    {
-      id: "openHelp",
-      title: "Help & shortcuts",
-      sub: "Keyboard",
-      run: () => openModal("help"),
-    },
-    {
-      id: "toggleTheme",
-      title: "Toggle theme",
-      sub: "Light/Dark",
-      run: () => toggleTheme(),
-    },
+    { id: "goHome", title: "Go to Home", sub: "Landing view", run: () => setActiveView("home") },
+    { id: "goEarn", title: "Go to Earn", sub: "Tasks & rewards", run: () => setActiveView("earn") },
+    { id: "goDashboard", title: "Go to Dashboard", sub: "VPS management", run: () => setActiveView("dashboard") },
+    { id: "goSettings", title: "Go to Settings", sub: "Personalize UI", run: () => setActiveView("settings") },
+    { id: "openAuth", title: "Login / Register", sub: "Sign in", run: () => openAuthModal("login") },
+    { id: "openNotifications", title: "Notifications", sub: "Open inbox", run: () => openModal("notifications") },
+    { id: "openCreateVps", title: "Create VPS", sub: "Redeem points", run: () => openModal("createVps") },
+    { id: "resumeVps", title: "Start/Resume selected", sub: "Begin countdown", run: () => createOrResumeSelected() },
+    { id: "extendVps", title: "Extend selected", sub: "Add hours using points", run: () => openExtendModal() },
+    { id: "stopVps", title: "Stop selected", sub: "Pause timer", run: () => stopSelectedWithConfirm() },
+    { id: "openSsh", title: "SSH", sub: "Copy connection commands", run: () => openModal("ssh") },
+    { id: "openAchievements", title: "Achievements", sub: "Claim rewards", run: () => openModal("achievements") },
+    { id: "exportData", title: "Export data", sub: "Download JSON", run: () => exportData() },
+    { id: "openHelp", title: "Help & shortcuts", sub: "Keyboard", run: () => openModal("help") },
+    { id: "toggleTheme", title: "Toggle theme", sub: "Light/Dark", run: () => toggleTheme() },
   ];
 
   function renderCmdList(filter = "") {
-    const q = String(filter || "")
-      .trim()
-      .toLowerCase();
+    const q = String(filter || "").trim().toLowerCase();
     const list = ui.cmdList;
     if (!list) return;
 
@@ -3167,9 +2939,7 @@
 
     const items = commands.filter((c) => {
       if (!q) return true;
-      return (
-        c.title.toLowerCase().includes(q) || c.sub.toLowerCase().includes(q)
-      );
+      return c.title.toLowerCase().includes(q) || c.sub.toLowerCase().includes(q);
     });
 
     if (items.length === 0) {
@@ -3230,15 +3000,13 @@
     if (!target) return;
 
     // import JSON (file input)
-    if (
-      target.matches('[data-action="importData"]') &&
-      target instanceof HTMLInputElement
-    ) {
+    if (target.matches('[data-action="importData"]') && target instanceof HTMLInputElement) {
       const file = target.files && target.files[0];
       if (file) importData(file);
       target.value = "";
       return;
     }
+
 
     // close modal
     const close = target.closest('[data-action="closeModal"]');
@@ -3297,11 +3065,7 @@
         openAuthModal("login");
         break;
       case "openAccount":
-        if (!currentUserId()) {
-          toast("Please sign in first.", "warn");
-          openAuthModal("login");
-          break;
-        }
+        if (!currentUserId()) { toast("Please sign in first.", "warn"); openAuthModal("login"); break; }
         openModal("account");
         break;
 
@@ -3314,11 +3078,7 @@
         break;
 
       case "openNotifications":
-        if (!currentUserId()) {
-          toast("Sign in to see notifications.", "warn");
-          openAuthModal("login");
-          break;
-        }
+        if (!currentUserId()) { toast("Sign in to see notifications.", "warn"); openAuthModal("login"); break; }
         openModal("notifications");
         break;
 
@@ -3369,10 +3129,7 @@
       case "refreshOffers":
         {
           const d = currentData();
-          if (!d) {
-            toast("Login required.", "warn");
-            break;
-          }
+          if (!d) { toast("Login required.", "warn"); break; }
           ensureOffers(d, true);
           toast("Offerwall refreshed.", "info");
           renderAll();
@@ -3387,11 +3144,7 @@
         break;
 
       case "openCreateVps":
-        if (!currentUserId()) {
-          toast("Please sign in first.", "warn");
-          openAuthModal("login");
-          break;
-        }
+        if (!currentUserId()) { toast("Please sign in first.", "warn"); openAuthModal("login"); break; }
         openModal("createVps");
         break;
 
@@ -3418,11 +3171,7 @@
         break;
 
       case "openSsh":
-        if (!currentUserId()) {
-          toast("Please sign in first.", "warn");
-          openAuthModal("login");
-          break;
-        }
+        if (!currentUserId()) { toast("Please sign in first.", "warn"); openAuthModal("login"); break; }
         openModal("ssh");
         break;
 
@@ -3449,10 +3198,7 @@
 
       case "instanceStart": {
         const d = currentData();
-        if (!d) {
-          toast("Login required.", "warn");
-          break;
-        }
+        if (!d) { toast("Login required.", "warn"); break; }
         const id = actionEl.getAttribute("data-id");
         if (!id) break;
         selectInstance(d, id);
@@ -3462,10 +3208,7 @@
 
       case "instanceStop": {
         const d = currentData();
-        if (!d) {
-          toast("Login required.", "warn");
-          break;
-        }
+        if (!d) { toast("Login required.", "warn"); break; }
         const id = actionEl.getAttribute("data-id");
         if (!id) break;
         selectInstance(d, id);
@@ -3475,10 +3218,7 @@
 
       case "instanceDestroy": {
         const d = currentData();
-        if (!d) {
-          toast("Login required.", "warn");
-          break;
-        }
+        if (!d) { toast("Login required.", "warn"); break; }
         const id = actionEl.getAttribute("data-id");
         if (!id) break;
         selectInstance(d, id);
@@ -3505,20 +3245,12 @@
         break;
 
       case "openPromo":
-        if (!currentUserId()) {
-          toast("Please sign in first.", "warn");
-          openAuthModal("login");
-          break;
-        }
+        if (!currentUserId()) { toast("Please sign in first.", "warn"); openAuthModal("login"); break; }
         openModal("promo");
         break;
 
       case "openReferral":
-        if (!currentUserId()) {
-          toast("Please sign in first.", "warn");
-          openAuthModal("login");
-          break;
-        }
+        if (!currentUserId()) { toast("Please sign in first.", "warn"); openAuthModal("login"); break; }
         openModal("referral");
         break;
 
@@ -3528,10 +3260,7 @@
           const code = d?.refCode || "CLOUD-XXXX";
           const link = `https://cloudvps.example/ref/${code}`;
           const ok = await copyToClipboard(link);
-          toast(
-            ok ? "Copied referral link." : "Copy failed.",
-            ok ? "good" : "warn",
-          );
+          toast(ok ? "Copied referral link." : "Copy failed.", ok ? "good" : "warn");
         }
         break;
 
@@ -3540,11 +3269,7 @@
         break;
 
       case "openAchievements":
-        if (!currentUserId()) {
-          toast("Please sign in first.", "warn");
-          openAuthModal("login");
-          break;
-        }
+        if (!currentUserId()) { toast("Please sign in first.", "warn"); openAuthModal("login"); break; }
         openModal("achievements");
         break;
 
@@ -3591,16 +3316,9 @@
 
       case "simulateDrop": {
         const d = currentData();
-        if (!d) {
-          toast("Login required.", "warn");
-          break;
-        }
+        if (!d) { toast("Login required.", "warn"); break; }
         addPoints(d, 25, "Bonus drop", "earn", { kind: "system" });
-        pushNotif(d, {
-          kind: "good",
-          title: "Bonus drop +25",
-          body: "Limited time reward (demo).",
-        });
+        pushNotif(d, { kind: "good", title: "Bonus drop +25", body: "Limited time reward (demo)." });
         toast("+25 bonus", "good");
         persistSoon();
         renderAll();
@@ -3609,15 +3327,8 @@
 
       case "simulateSystemNotice": {
         const d = currentData();
-        if (!d) {
-          toast("Login required.", "warn");
-          break;
-        }
-        pushNotif(d, {
-          kind: "info",
-          title: "System notice",
-          body: "Maintenance scheduled (demo).",
-        });
+        if (!d) { toast("Login required.", "warn"); break; }
+        pushNotif(d, { kind: "info", title: "System notice", body: "Maintenance scheduled (demo)." });
         toast("System notice added.", "info");
         persistSoon();
         renderAll();
@@ -3634,21 +3345,19 @@
     if (!target) return;
 
     // import JSON (file input)
-    if (
-      target.matches('[data-action="importData"]') &&
-      target instanceof HTMLInputElement
-    ) {
+    if (target.matches('[data-action="importData"]') && target instanceof HTMLInputElement) {
       const file = target.files && target.files[0];
       if (file) importData(file);
       target.value = "";
       return;
     }
 
+
     // instance select
     if (target.matches('[data-action="selectInstance"]')) {
       const d = currentData();
       if (!d) return;
-      const id = target.value;
+      const id = (target).value;
       if (id) selectInstance(d, id);
       return;
     }
@@ -3691,6 +3400,7 @@
     extendSelected(hours);
   });
 
+
   // live filters / recalcs
   ui.ledgerFilter?.addEventListener("input", () => renderLedger());
   ui.instanceSearch?.addEventListener("input", () => {
@@ -3702,16 +3412,12 @@
   ui.extendForm?.addEventListener("input", () => recalcExtendCost());
 
   // settings toggles
-  ui.reduceMotionToggle?.addEventListener("change", () =>
-    togglePrefBool("reduceMotion"),
-  );
+  ui.reduceMotionToggle?.addEventListener("change", () => togglePrefBool("reduceMotion"));
   ui.soundToggle?.addEventListener("change", () => togglePrefBool("sound"));
   ui.tipsToggle?.addEventListener("change", () => togglePrefBool("tips"));
 
   // cmd palette input
-  ui.cmdInput?.addEventListener("input", () =>
-    renderCmdList(ui.cmdInput.value),
-  );
+  ui.cmdInput?.addEventListener("input", () => renderCmdList(ui.cmdInput.value));
   ui.cmdList?.addEventListener("click", (e) => {
     const t = e.target instanceof HTMLElement ? e.target : null;
     const btn = t?.closest('[data-action="runCmd"]');
@@ -3725,11 +3431,7 @@
   document.addEventListener("keydown", (e) => {
     // don't interfere while typing
     const ae = document.activeElement;
-    const inInput =
-      ae &&
-      (ae.tagName === "INPUT" ||
-        ae.tagName === "TEXTAREA" ||
-        ae.isContentEditable);
+    const inInput = ae && (ae.tagName === "INPUT" || ae.tagName === "TEXTAREA" || ae.isContentEditable);
     if (inInput && !(e.ctrlKey && e.key.toLowerCase() === "k")) return;
 
     if (e.ctrlKey && e.key.toLowerCase() === "k") {
@@ -3747,11 +3449,7 @@
     if (e.key.toLowerCase() === "n") {
       if (!activeModal) {
         e.preventDefault();
-        if (!currentUserId()) {
-          toast("Sign in to see notifications.", "warn");
-          openAuthModal("login");
-          return;
-        }
+        if (!currentUserId()) { toast("Sign in to see notifications.", "warn"); openAuthModal("login"); return; }
         openModal("notifications");
       }
       return;
@@ -3772,22 +3470,10 @@
     }
     if (gPrefixAt && now() - gPrefixAt < 1200) {
       const k = e.key.toLowerCase();
-      if (k === "h") {
-        setActiveView("home");
-        gPrefixAt = 0;
-      }
-      if (k === "e") {
-        setActiveView("earn");
-        gPrefixAt = 0;
-      }
-      if (k === "d") {
-        setActiveView("dashboard");
-        gPrefixAt = 0;
-      }
-      if (k === "s") {
-        setActiveView("settings");
-        gPrefixAt = 0;
-      }
+      if (k === "h") { setActiveView("home"); gPrefixAt = 0; }
+      if (k === "e") { setActiveView("earn"); gPrefixAt = 0; }
+      if (k === "d") { setActiveView("dashboard"); gPrefixAt = 0; }
+      if (k === "s") { setActiveView("settings"); gPrefixAt = 0; }
     }
   });
 
@@ -3795,9 +3481,7 @@
   // Misc actions that need direct binding
   // ---------------------------------------------------------
   $$('[data-action="socialLogin"]').forEach((btn) => {
-    btn.addEventListener("click", () =>
-      socialLogin(btn.getAttribute("data-provider") || "google"),
-    );
+    btn.addEventListener("click", () => socialLogin(btn.getAttribute("data-provider") || "google"));
   });
 
   // ---------------------------------------------------------
@@ -3829,17 +3513,17 @@
     applyDashTabUI(tab);
 
     // keep create/extend balances fresh when modal is open
-    if (activeModal?.getAttribute("data-modal") === "createVps")
-      recalcCreateCost();
-    if (activeModal?.getAttribute("data-modal") === "extendVps")
-      recalcExtendCost();
+    if (activeModal?.getAttribute("data-modal") === "createVps") recalcCreateCost();
+    if (activeModal?.getAttribute("data-modal") === "extendVps") recalcExtendCost();
   }
 
   // ---------------------------------------------------------
   // Init
   // ---------------------------------------------------------
-  function init() {
+  async function init() {
     applyPrefs();
+
+    await syncOptionsFromWorkflowYml();
 
     // initial route
     setActiveView(routeFromHash(), { pushHash: true });
@@ -3865,14 +3549,8 @@
       const d = currentData();
       if (d) {
         const inst = getSelectedInstance(d);
-        safeText(
-          ui.timePill,
-          inst ? formatHHMMSS(inst.timeLeftSec) : "00:00:00",
-        );
-        safeText(
-          ui.timeRemaining,
-          inst ? formatHHMMSS(inst.timeLeftSec) : "00:00:00",
-        );
+        safeText(ui.timePill, inst ? formatHHMMSS(inst.timeLeftSec) : "00:00:00");
+        safeText(ui.timeRemaining, inst ? formatHHMMSS(inst.timeLeftSec) : "00:00:00");
       }
       renderTasksUI();
     }, CFG.tickMs);
@@ -3891,28 +3569,16 @@
     }, CFG.metricsTickMs);
 
     // hash routing
-    window.addEventListener("hashchange", () =>
-      setActiveView(routeFromHash(), { pushHash: false }),
-    );
+    window.addEventListener("hashchange", () => setActiveView(routeFromHash(), { pushHash: false }));
 
     // expose small debug API
     window.CloudVPS = {
       getApp: () => app,
-      resetAll: () => {
-        localStorage.removeItem(CFG.storageKey);
-        location.reload();
-      },
-      addPoints: (n = 10) => {
-        const d = currentData();
-        if (d) {
-          addPoints(d, Number(n), "Debug add points", "earn", {
-            kind: "debug",
-          });
-          renderAll();
-        }
-      },
+      resetAll: () => { localStorage.removeItem(CFG.storageKey); location.reload(); },
+      addPoints: (n = 10) => { const d = currentData(); if (d) { addPoints(d, Number(n), "Debug add points", "earn", { kind:"debug" }); renderAll(); } },
     };
   }
 
   init();
+
 })();

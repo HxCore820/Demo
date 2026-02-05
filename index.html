@@ -10,8 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="./styles.css" />
-  <script src="./app.js" defer></script>
+  <!-- Versioned query params help bypass aggressive browser cache when iterating locally -->
+  <link rel="stylesheet" href="./styles.css?v=3" />
+  <script src="./app.js?v=3" defer></script>
 </head>
 
 <body>
@@ -481,7 +482,7 @@
                   </div>
                   <div class="muted small">
                     <strong data-ui="instanceName">—</strong> •
-                    <span data-ui="planLabel">Plan: Free</span>
+                    <span data-ui="planLabel">Specs: —</span>
                   </div>
                 </div>
 
@@ -598,7 +599,7 @@
           <section class="glass card system" aria-label="System info">
             <div class="system__grid">
               <div class="sys">
-                <div class="sys__k">Region</div>
+                <div class="sys__k">Language</div>
                 <div class="sys__v" data-ui="region">—</div>
               </div>
               <div class="sys">
@@ -614,7 +615,7 @@
                 <div class="sys__v" data-ui="createdAt">—</div>
               </div>
               <div class="sys">
-                <div class="sys__k">Image</div>
+                <div class="sys__k">OS Version</div>
                 <div class="sys__v" data-ui="imageLabel">—</div>
               </div>
             </div>
@@ -641,8 +642,8 @@
             <div class="table" role="table" aria-label="Instances table">
               <div class="table__head" role="row">
                 <div role="columnheader">Name</div>
-                <div role="columnheader">Plan</div>
-                <div role="columnheader">Region</div>
+                <div role="columnheader">OS Version</div>
+                <div role="columnheader">Language</div>
                 <div role="columnheader">Status</div>
                 <div role="columnheader">Time</div>
                 <div role="columnheader" class="ta-right">Actions</div>
@@ -1017,7 +1018,7 @@
         <div class="modal__head">
           <div>
             <div class="modal__title">Create VPS</div>
-            <div class="modal__sub muted">Choose plan, region, image, and duration</div>
+            <div class="modal__sub muted">Synced with WindowsRDP.yml (OS & language options)</div>
           </div>
           <button class="icon-btn" type="button" data-action="closeModal" aria-label="Close">✕</button>
         </div>
@@ -1033,30 +1034,29 @@
               <label class="field">
                 <span class="label">Duration</span>
                 <select class="input" name="hours" data-action="recalcCreateCost">
-                  <option value="6" selected>6 hours</option>
-                  <option value="2">2 hours</option>
-                  <option value="1">1 hour</option>
+                  
+                  <option value="6" selected>6 hours (fixed)</option>
                 </select>
               </label>
             </div>
 
             <div class="row row--3">
               <label class="field">
-                <span class="label">Plan</span>
+                <span class="label">Specs</span>
                 <select class="input" name="plan" data-action="recalcCreateCost">
                   <!-- populated by JS -->
                 </select>
               </label>
 
               <label class="field">
-                <span class="label">Region</span>
+                <span class="label">Language</span>
                 <select class="input" name="region">
                   <!-- populated by JS -->
                 </select>
               </label>
 
               <label class="field">
-                <span class="label">Image</span>
+                <span class="label">Operating System</span>
                 <select class="input" name="image">
                   <!-- populated by JS -->
                 </select>
