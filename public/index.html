@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CloudVPS — Free 6H via Points</title>
+  <meta name="color-scheme" content="light dark" />
+  <link rel="stylesheet" href="./styles.css?v=1" />
+</head>
+<body>
+  <a class="sr-only sr-only-focusable" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand" role="button" tabindex="0" data-nav="home" aria-label="Go to Home">
+        <span class="brand-mark" aria-hidden="true">☁️</span>
+        <div class="brand-text">
+          <div class="brand-name">CloudVPS</div>
+          <div class="brand-tag">Free 6H via Points</div>
+        </div>
+      </div>
+
+      <nav class="tabs" aria-label="Primary">
+        <button class="tab is-active" type="button" data-tab="home">Home</button>
+        <button class="tab" type="button" data-tab="earn">Earn</button>
+        <button class="tab" type="button" data-tab="dashboard">Dashboard</button>
+        <button class="tab" type="button" data-tab="settings">Settings</button>
+      </nav>
+
+      <div class="top-actions">
+        <div class="chip chip-soft" id="chipPoints" title="Points balance">
+          <span class="chip-ico" aria-hidden="true">★</span>
+          <span id="pointsBalance">—</span>
+        </div>
+        <div class="chip chip-soft" id="chipSession" title="Active session time left">
+          <span class="chip-ico" aria-hidden="true">⏳</span>
+          <span id="activeTimeLeft">—</span>
+        </div>
+        <button class="btn btn-secondary" type="button" id="btnOpenAuth">
+          <span class="btn-ico" aria-hidden="true">👤</span>
+          <span id="authBtnLabel">Login</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="app">
+    <!-- HOME -->
+    <section class="view is-active" data-view="home" aria-labelledby="homeTitle">
+      <div class="hero glass">
+        <div class="hero-left">
+          <h1 id="homeTitle">Free VPS 6H — Earn Points by Watching Ads</h1>
+          <p class="hero-sub">
+            Premium-style cloud control panel. Earn points, redeem 6 hours, manage sessions. (Vanilla + Firebase + Worker)
+          </p>
+
+          <div class="hero-cta">
+            <button class="btn btn-primary" type="button" data-tab-jump="earn">
+              <span class="btn-ico" aria-hidden="true">▶</span>
+              Watch Ads to Earn Points
+            </button>
+            <button class="btn btn-secondary" type="button" data-tab-jump="dashboard">
+              <span class="btn-ico" aria-hidden="true">⚡</span>
+              Get Free VPS
+            </button>
+          </div>
+
+          <div class="progress-block" aria-label="Points progress">
+            <div class="progress-top">
+              <div class="muted">Session points</div>
+              <div class="progress-meta">
+                <strong id="sessionEarned">0</strong>
+                <span class="muted">/</span>
+                <strong id="sessionTarget">300</strong>
+              </div>
+            </div>
+            <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="300" aria-valuenow="0">
+              <div class="progress-fill" id="heroProgressFill" style="width:0%"></div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-pill"><span aria-hidden="true">🔒</span> Auth + DB via Firebase</div>
+            <div class="info-pill"><span aria-hidden="true">🧰</span> Actions proxy via Worker</div>
+            <div class="info-pill"><span aria-hidden="true">📱</span> Mobile-first</div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="stat-grid">
+            <div class="stat glass">
+              <div class="stat-k">Active sessions</div>
+              <div class="stat-v" id="statActive">0</div>
+            </div>
+            <div class="stat glass">
+              <div class="stat-k">Total sessions</div>
+              <div class="stat-v" id="statTotal">0</div>
+            </div>
+            <div class="stat glass">
+              <div class="stat-k">Cooldown</div>
+              <div class="stat-v" id="statCooldown">—</div>
+            </div>
+            <div class="stat glass">
+              <div class="stat-k">Status</div>
+              <div class="stat-v" id="statStatus">Ready</div>
+            </div>
+          </div>
+
+          <div class="mini-card glass">
+            <div class="mini-title">Recent activity</div>
+            <ul class="mini-list" id="activityList"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EARN -->
+    <section class="view" data-view="earn" aria-labelledby="earnTitle">
+      <div class="section-head">
+        <h2 id="earnTitle">Earn Points</h2>
+        <div class="muted">Cooldown + daily reset (UTC). (Frontend demo, you can harden later.)</div>
+      </div>
+
+      <div class="grid">
+        <article class="card glass" data-task="video">
+          <div class="card-top">
+            <div class="card-title">Watch Video Ads</div>
+            <span class="pill pill-soft" data-task-pill>Available</span>
+          </div>
+          <div class="card-body">
+            <p class="muted">Earn <strong>+5</strong> points. Cooldown applies.</p>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-primary" type="button" data-task-btn>Watch Now</button>
+          </div>
+        </article>
+
+        <article class="card glass" data-task="short">
+          <div class="card-top">
+            <div class="card-title">Complete Short Links</div>
+            <span class="pill pill-soft" data-task-pill>Available</span>
+          </div>
+          <div class="card-body">
+            <p class="muted">Earn <strong>+2</strong> points. Cooldown applies.</p>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-primary" type="button" data-task-btn>Open Link</button>
+          </div>
+        </article>
+
+        <article class="card glass" data-task="daily">
+          <div class="card-top">
+            <div class="card-title">Daily Mission</div>
+            <span class="pill pill-soft" data-task-pill>Active</span>
+          </div>
+          <div class="card-body">
+            <p class="muted">Claim <strong>+10</strong> once per day (UTC).</p>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-primary" type="button" data-task-btn>Claim</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="callout glass">
+        <div>
+          <div class="callout-title">Tip</div>
+          <div class="muted">For “real” points (anti-cheat), move awarding to Worker/Functions. This build keeps it simple.</div>
+        </div>
+        <button class="btn btn-secondary" type="button" data-tab-jump="dashboard">Go to Dashboard</button>
+      </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section class="view" data-view="dashboard" aria-labelledby="dashTitle">
+      <div class="section-head dash-head">
+        <div>
+          <h2 id="dashTitle">Dashboard</h2>
+          <div class="muted">Create / Stop / Sync session from GitHub Actions (via Worker). Store state in Firebase RTDB.</div>
+        </div>
+        <div class="dash-actions">
+          <button class="btn btn-primary" type="button" id="btnCreate">
+            <span class="btn-ico" aria-hidden="true">＋</span>Create Session
+          </button>
+          <button class="btn btn-secondary" type="button" id="btnSyncAll">
+            <span class="btn-ico" aria-hidden="true">⟳</span>Sync All
+          </button>
+        </div>
+      </div>
+
+      <div class="table glass" role="region" aria-label="Sessions">
+        <div class="table-head">
+          <div class="muted">Your sessions</div>
+          <div class="table-tools">
+            <input class="input" id="searchSessions" placeholder="Search OS / status…" />
+          </div>
+        </div>
+
+        <div class="table-wrap" id="sessionsWrap">
+          <table class="sessions" id="sessionsTable">
+            <thead>
+              <tr>
+                <th>OS</th>
+                <th>Language</th>
+                <th>Status</th>
+                <th>Time left</th>
+                <th>Run</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="sessionsBody"></tbody>
+          </table>
+        </div>
+
+        <div class="empty glass" id="sessionsEmpty">
+          <div class="empty-title">No sessions yet</div>
+          <div class="muted">Create a session to start. Connection info will appear after the workflow posts it back.</div>
+          <button class="btn btn-primary" type="button" id="btnCreateEmpty">Create Session</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="view" data-view="settings" aria-labelledby="settingsTitle">
+      <div class="section-head">
+        <h2 id="settingsTitle">Settings</h2>
+        <div class="muted">Worker URL + UI preferences. Saved locally.</div>
+      </div>
+
+      <div class="grid">
+        <article class="card glass">
+          <div class="card-top">
+            <div class="card-title">Worker API Base URL</div>
+          </div>
+          <div class="card-body">
+            <label class="label">Example: https://your-worker.yourdomain.workers.dev</label>
+            <input class="input" id="workerBaseUrl" placeholder="https://…" />
+            <div class="hint">Tip: If Worker is routed on same domain, set empty.</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-primary" type="button" id="btnSaveWorker">Save</button>
+            <button class="btn btn-secondary" type="button" id="btnTestWorker">Test</button>
+          </div>
+          <div class="muted small" id="workerTestResult"></div>
+        </article>
+
+        <article class="card glass">
+          <div class="card-top">
+            <div class="card-title">Theme</div>
+          </div>
+          <div class="card-body">
+            <div class="seg" role="group" aria-label="Theme">
+              <button class="seg-btn" type="button" data-theme="light">Light</button>
+              <button class="seg-btn" type="button" data-theme="dark">Dark</button>
+              <button class="seg-btn" type="button" data-theme="auto">Auto</button>
+            </div>
+            <div class="row">
+              <label class="check">
+                <input type="checkbox" id="reduceMotion" />
+                <span>Reduce motion</span>
+              </label>
+            </div>
+          </div>
+        </article>
+
+        <article class="card glass">
+          <div class="card-top">
+            <div class="card-title">Data</div>
+          </div>
+          <div class="card-body">
+            <div class="muted">Export/Import local settings only. (User/VPS live in Firebase.)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary" type="button" id="btnExport">Export</button>
+            <button class="btn btn-secondary" type="button" id="btnImport">Import</button>
+            <button class="btn btn-secondary" type="button" id="btnResetUI">Reset UI</button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom nav (mobile) -->
+  <nav class="bottom-nav" aria-label="Bottom navigation">
+    <button type="button" class="bn-item is-active" data-tab="home">
+      <span class="bn-ico" aria-hidden="true">🏠</span>
+      <span class="bn-txt">Home</span>
+    </button>
+    <button type="button" class="bn-item" data-tab="earn">
+      <span class="bn-ico" aria-hidden="true">🎁</span>
+      <span class="bn-txt">Earn</span>
+    </button>
+    <button type="button" class="bn-item" data-tab="dashboard">
+      <span class="bn-ico" aria-hidden="true">🖥️</span>
+      <span class="bn-txt">VPS</span>
+    </button>
+    <button type="button" class="bn-item" data-tab="settings">
+      <span class="bn-ico" aria-hidden="true">⚙️</span>
+      <span class="bn-txt">Settings</span>
+    </button>
+  </nav>
+
+  <!-- AUTH MODAL -->
+  <div class="modal" id="authModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card glass" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <div class="modal-head">
+        <div>
+          <div class="modal-title" id="authTitle">Account</div>
+          <div class="muted small" id="authSubtitle">Login to sync your sessions.</div>
+        </div>
+        <button class="icon-btn" type="button" data-close aria-label="Close">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="seg" role="tablist">
+          <button class="seg-btn is-active" type="button" data-auth-tab="login" role="tab">Login</button>
+          <button class="seg-btn" type="button" data-auth-tab="register" role="tab">Register</button>
+        </div>
+
+        <form id="loginForm" class="form" autocomplete="on">
+          <label class="label">Email</label>
+          <input class="input" type="email" id="loginEmail" required placeholder="you@email.com" />
+
+          <label class="label">Password</label>
+          <input class="input" type="password" id="loginPassword" required placeholder="••••••••" />
+
+          <button class="btn btn-primary btn-block" type="submit">Login</button>
+
+          <div class="or"><span>or</span></div>
+
+          <button class="btn btn-secondary btn-block" type="button" id="btnGoogle">Continue with Google</button>
+          <button class="btn btn-secondary btn-block" type="button" id="btnGithub">Continue with GitHub</button>
+        </form>
+
+        <form id="registerForm" class="form is-hidden" autocomplete="on">
+          <label class="label">Display name</label>
+          <input class="input" type="text" id="regName" required placeholder="Your name" />
+
+          <label class="label">Email</label>
+          <input class="input" type="email" id="regEmail" required placeholder="you@email.com" />
+
+          <label class="label">Password</label>
+          <input class="input" type="password" id="regPassword" required minlength="6" placeholder="min 6 chars" />
+
+          <button class="btn btn-primary btn-block" type="submit">Create account</button>
+        </form>
+
+        <div class="account-box is-hidden" id="accountBox">
+          <div class="row between">
+            <div>
+              <div class="strong" id="meName">—</div>
+              <div class="muted small" id="meEmail">—</div>
+            </div>
+            <div class="pill pill-good" id="meUid">UID</div>
+          </div>
+
+          <div class="row between">
+            <div class="muted">Points</div>
+            <div class="strong" id="mePoints">0</div>
+          </div>
+
+          <button class="btn btn-secondary btn-block" type="button" id="btnLogout">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CREATE SESSION MODAL -->
+  <div class="modal" id="createModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card glass" role="dialog" aria-modal="true" aria-labelledby="createTitle">
+      <div class="modal-head">
+        <div>
+          <div class="modal-title" id="createTitle">Create RDP Session</div>
+          <div class="muted small">Options sync from workflow inputs.</div>
+        </div>
+        <button class="icon-btn" type="button" data-close aria-label="Close">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <label class="label">Operating System</label>
+        <select class="input" id="osSelect"></select>
+
+        <label class="label">Language</label>
+        <select class="input" id="langSelect"></select>
+
+        <div class="row between">
+          <div class="muted small">Cost</div>
+          <div class="pill pill-soft"><strong id="costPoints">300</strong> pts → 6h</div>
+        </div>
+
+        <div class="row between">
+          <button class="btn btn-secondary" type="button" data-close>Cancel</button>
+          <button class="btn btn-primary" type="button" id="btnCreateConfirm">Dispatch Workflow</button>
+        </div>
+
+        <div class="hint" id="createHint"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECTION MODAL -->
+  <div class="modal" id="connModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card glass" role="dialog" aria-modal="true" aria-labelledby="connTitle">
+      <div class="modal-head">
+        <div>
+          <div class="modal-title" id="connTitle">Connection</div>
+          <div class="muted small" id="connSubtitle">Use RDP or Web Viewer.</div>
+        </div>
+        <button class="icon-btn" type="button" data-close aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="kv">
+          <div class="k">RDP</div>
+          <div class="v">
+            <code id="connRdp">—</code>
+            <button class="btn btn-secondary btn-sm" type="button" data-copy="#connRdp">Copy</button>
+          </div>
+
+          <div class="k">Web</div>
+          <div class="v">
+            <code id="connWeb">—</code>
+            <button class="btn btn-secondary btn-sm" type="button" data-copy="#connWeb">Copy</button>
+            <a class="btn btn-secondary btn-sm" id="connWebOpen" href="#" target="_blank" rel="noreferrer">Open</a>
+          </div>
+
+          <div class="k">Username</div>
+          <div class="v">
+            <code id="connUser">—</code>
+            <button class="btn btn-secondary btn-sm" type="button" data-copy="#connUser">Copy</button>
+          </div>
+
+          <div class="k">Password</div>
+          <div class="v">
+            <code id="connPass">—</code>
+            <button class="btn btn-secondary btn-sm" type="button" data-copy="#connPass">Copy</button>
+          </div>
+        </div>
+
+        <div class="row between">
+          <button class="btn btn-secondary" type="button" id="btnFetchConn">Refresh</button>
+          <button class="btn btn-primary" type="button" data-close>Done</button>
+        </div>
+
+        <div class="hint" id="connHint"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Firebase compat (no bundler, vanilla) -->
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+
+  <script defer src="./firebase-config.js?v=1"></script>
+  <script defer src="./app.js?v=1"></script>
+</body>
+</html>

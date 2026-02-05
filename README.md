@@ -1,41 +1,90 @@
-# CloudVPS — Ultimate Demo (v3)
+# CloudVPS (Vanilla) — Firebase RTDB + Cloudflare Worker + GitHub Actions
 
-> Frontend-only demo (no backend). Data is stored in **localStorage**.
+This project turns your frontend into a *real control panel*:
+- **Firebase Auth + Realtime Database**: store users + sessions
+- **Cloudflare Worker**: keeps GitHub token secret, dispatch/cancel runs, and stores **connection info** posted from workflow
+- **WindowsRDP workflow**: posts connection info back to Worker via webhook
 
-## What’s new (big upgrade)
-- ✅ **4 main tabs**: Home / Earn / Dashboard / Settings
-- ✅ **Multi-instance VPS** (max 3 instances) + **1 running at a time**
-- ✅ **Offerwall** (daily UTC refresh), cooldown tasks, streak check-in
-- ✅ **Video chain bonus**: watch 3 video ads (within 15 min) => +10 bonus
-- ✅ **Achievements** (unlock + claim bonus points)
-- ✅ **Notifications inbox** + badge counter
-- ✅ **Settings**: theme (light/dark/auto), accent, density, reduce motion, sounds, tips
-- ✅ **Command palette** (Ctrl+K) + keyboard shortcuts (G then H/E/D/S, N, T, ?)
-- ✅ **Charts**: points (last 7 days) + CPU trend (selected instance)
-- ✅ **Export / Import JSON**, Reset app, demo tweaks
+## 1) Deploy frontend (Cloudflare Pages)
+Upload **public/** to Cloudflare Pages.
+- build command: (none)
+- output dir: `public`
 
-## Mobile notes
-- Bottom navigation is optimized for mobile (4 tabs, no wrapping).
-- Dashboard header + instances list adapt into a stacked layout on small screens.
-- Topbar auto-simplifies on mobile to avoid cramped spacing.
+## 2) Firebase setup (Realtime Database)
+1. Firebase Console → Authentication:
+   - Enable Email/Password
+   - Enable Google + GitHub (optional)
 
-## Run
-Open `index.html` directly in a browser.
+2. Firebase Console → Realtime Database:
+   - Create DB
+   - Paste rules from below
 
-> Recommended: use a local server (better for some browsers)
-- VSCode: “Live Server”
-- Or: `python -m http.server`
+3. Put your config into `public/firebase-config.js`:
+```js
+window.FIREBASE_CONFIG = {
+  apiKey: "...",
+  authDomain: "...",
+  databaseURL: "https://<project-id>-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "...",
+  appId: "..."
+};
+```
+
+### RTDB rules (minimal)
+```json
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "vps": {
+      "$uid": {
+        "$id": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid"
+        }
+      }
+    }
+  }
+}
+```
+
+## 3) Cloudflare Worker setup
+Deploy `worker/worker.js`.
+
+### Bindings (required)
+- **Secrets**:
+  - `GITHUB_TOKEN` (repo access to dispatch/cancel)
+  - `GITHUB_OWNER` (e.g. your-username)
+  - `GITHUB_REPO`  (e.g. your-repo)
+  - `GITHUB_REF`   (e.g. main)
+  - `WORKFLOW_FILE` (e.g. WindowsRDP.yml)
+  - `WORKFLOW_PATH` (e.g. .github/workflows/WindowsRDP.yml)
+  - `WEBHOOK_SECRET` (random string)
+
+- **KV Namespace**:
+  - bind name: `SESSIONS_KV`
+
+### Worker URLs
+Your frontend Settings → **Worker API Base URL**:
+- If Worker is on `https://xxx.workers.dev`, paste that.
+- If you route Worker under same domain (Pages Functions/Routes), leave empty.
+
+## 4) Patch your GitHub Actions workflow
+Use `workflow/WindowsRDP.patched.yml` as your `.github/workflows/WindowsRDP.yml`.
+
+Set these GitHub repo secrets:
+- `WEBHOOK_URL` = your worker base url (e.g. https://xxx.workers.dev)
+- `WEBHOOK_SECRET` = same as Worker secret
+
+Now when the workflow captures RDP/Web addresses, it will POST them to:
+`/api/webhook/connection`
+and the FE can fetch them via:
+`/api/runs/<runId>/connection`
 
 ## Notes
-- Passwords are stored as a **non-cryptographic hash** (demo only).
-- Daily reset is based on **00:00 UTC**.
-- VPS metrics & provisioning are simulated.
-
-Enjoy!
-
-
-## WindowsRDP.yml sync
-- Put `WindowsRDP.yml` next to `index.html` (same folder).
-- Run via a local server (recommended) so the app can `fetch()` the YML and auto-sync OS/Language options.
-  - Example: `python -m http.server` then open `http://localhost:8000`.
-- If YML can't be fetched (file://), the UI falls back to embedded defaults matching the provided workflow.
+- This is still frontend-heavy. For anti-cheat points, move awarding to Worker later.
+- Current workflow hardcodes password (as in your yml). Consider randomizing per run later.
